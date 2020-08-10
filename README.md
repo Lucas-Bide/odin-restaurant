@@ -1,0 +1,1 @@
+This [Odin Project](https://www.theodinproject.com/courses/javascript/lessons/restaurant-page?ref=lnav) explores the use of ES6 modules and the workflows of npm and webpack in the development of a restaurant homepage.
