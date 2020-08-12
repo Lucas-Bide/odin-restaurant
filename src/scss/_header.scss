@@ -45,7 +45,7 @@ $nav-text: rgb(107, 90, 36);
   color: $nav-text;
 }
 
-.nav-item:first-child {
+.nav-item:nth-child(2) {
   border-top-left-radius: $nav-bend;
 }
 
