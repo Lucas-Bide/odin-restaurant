@@ -6,13 +6,14 @@
 
 /* Header Styling */
 
-$nav-bend: 10px;
-$nav-border: 4px solid #fbd24f;
+$nav-bend: 50px;
+$nav-border-color: #fbd24f;
+$nav-border: 4px solid $nav-border-color;
 $nav-bg: rgb(218, 171, 18);
 $nav-text: rgb(107, 90, 36);
 
 #navigation {
-  background: url("../images/banana-cropped.jpg") center center no-repeat;
+  background: url("../images/banana.jpg") center center no-repeat;
   background-size: cover;
   height: 200px;
   padding-top: 40px;
@@ -43,6 +44,18 @@ $nav-text: rgb(107, 90, 36);
   border-right: none;
   padding: 10px 30px;
   font-size: 30px;
+}
+
+.nav-item:hover {
+  background: $nav-border-color;
+}
+
+.current-tab {
+  background: $nav-border-color;
+}
+
+.current-tab a, .current-tab a:hover {
+  color: darken($color: $nav-text, $amount: 20%) !important;
 }
 
 // Make top end borders round
@@ -126,10 +139,6 @@ $nav-text: rgb(107, 90, 36);
     padding: 0;
   }
 
-  .nav-item a:focus {
-    color: darken($color: $nav-text, $amount: 10%)
-  }
-
   #nav-exit {
     align-self: flex-end;
   }
@@ -146,6 +155,17 @@ $nav-text: rgb(107, 90, 36);
   .nav {
     display: flex !important;
     animation: none !important;
+  }
+  #nav-exit {
+    display: none !important;
+  }
+
+  .nav-item:nth-child(2) {
+    padding-left: 20px;
+  }
+
+  .nav-item:last-child {
+    padding-right: 20px;
   }
 }
 

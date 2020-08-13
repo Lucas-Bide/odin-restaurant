@@ -1,12 +1,53 @@
+// Variables
+
+$header-height: 200px;
+
+// Global
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
   height: 100vh;
+  overflow: hidden;
 }
 
 a, a:hover {
   color: black;
   text-decoration: none;
+}
+
+#content-tab {
+  height: calc(100vh - 200px);
+  background: url("../images/body.jpg") center no-repeat;
+  background-size: cover;
+  padding-top: 30px;
+}
+
+#content {
+  width: 90%;
+  height: 95%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.63) content-box;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#content::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+@media(max-width: 899.99px) {
+  #content-tab {
+    height: calc(100vh - 150px);
+    background-position: 80%;
+  }
+}
+
+@media(max-width: 559.99px) {
+  #content-tab {
+    height: calc(100vh - 80px);
+  }
 }
