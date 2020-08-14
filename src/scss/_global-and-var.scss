@@ -32,9 +32,10 @@ a, a:hover {
 }
 
 #content {
-  width: 90%;
-  height: 95%;
-  margin: 0 auto;
+  // width: 90%; // Removed b/c gw
+  // height: 95%;
+  // margin: 0 auto;
+  height: 100%;
   background: rgba(255, 255, 255, 0.781) content-box;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -42,6 +43,14 @@ a, a:hover {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 20px;
   color: black;
+}
+
+.gw {
+  position: relative;
+
+  width: 90%;
+  height: 95%;
+  margin: 0 auto;
 }
 
 #content::-webkit-scrollbar {
@@ -89,6 +98,25 @@ a, a:hover {
   padding: 20px;
   text-align: center;
   height: 100%;
+}
+
+// Github Link
+
+.github {
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 20;
+  bottom: -18px;
+  right: -18px;
+  background-color: red;
+  border-radius: 50%;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+  padding-top: 15px;
 }
 
 

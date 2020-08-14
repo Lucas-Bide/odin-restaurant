@@ -27,6 +27,10 @@ let tc = ['Appetizers', 'Entrees', 'Soups', 'Salads', 'Desserts', 'Drinks'];
 for (let i = 0; i < 6; i++) {
   let tab = document.createElement('div');
   tab.classList.add('menu-nav-tab');
+
+  if (i == 0) {
+    tab.classList.add('current-menu-tab');
+  }
   
   tab.addEventListener('click', () => {
     let tabs = document.querySelectorAll('.menu-nav-tab');
@@ -139,6 +143,20 @@ function menuCategory(id, ...pics) {
   }
   else {
     // Some paragraphs with nonalcoholic, alcoholic, smoothie, etc.
+    let types = ['Nonalcoholic', 'Alcoholic', 'Hot'];
+    let drinks = [['Soda', 'Water', 'Smoothie'], ['Wine', 'Beer', 'Whiskey', 'Mimosa'], ['Coffee', 'Milk', 'Tea']];
+    for (let i = 0; i < 3; i++) {
+      let type = document.createElement('h1');
+      type.classList.add('subtitle');
+      type.textContent = types[i];
+      cat.appendChild(type);
+
+      for (let drink of drinks[i]) {
+        let d = document.createElement('p');
+        d.textContent = drink;
+        cat.appendChild(d);
+      }
+    }
   }
-  return cat
+  return cat;
 }

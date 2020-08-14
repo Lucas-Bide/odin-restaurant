@@ -1,6 +1,7 @@
 import contactPage from './contact.js';
 import aboutPage from './about.js';
 import menuPage from './menu.js';
+import homepage from './homepage.js';
 
 let structure = document.querySelector('#structure');
 
@@ -49,24 +50,21 @@ for (let i = 0; i < 5; i++) {
       let nextPage;
       switch (current.textContent) {
         case 'Homepage':
-          nextPage =  null;//homepage;
+          nextPage =  homepage;
           break;
         case 'Menu':
-          nextPage =  menuPage;//menuPage;
+          nextPage =  menuPage;
           content.style.overflowY = 'hidden';
           break;
         case 'About':
-          nextPage = aboutPage;// aboutPage;
+          nextPage = aboutPage;
           break;
         case 'Contact':
           nextPage = contactPage;
           break;
       }
 
-      if (page == null) {
-        content.appendChild(nextPage);
-      }
-      else if (page.id != nextPage.id) {
+      if (page.id != nextPage.id) {
         content.removeChild(page);
         content.appendChild(nextPage);
       }
@@ -91,18 +89,51 @@ header.appendChild(menuBar);
 
 structure.appendChild(header);
 
+// Navigation
+
+let navExit = document.querySelector('#nav-exit');
+let nav = document.querySelector('#navigation .nav');
+
+menuBar.addEventListener('click', () => {
+  nav.style.display = 'flex';
+  nav.style.animation = '.5s menu-slide-in linear';
+  navExit.style.display = 'block';
+});
+
+navExit.addEventListener('click', () => {
+  nav.style.animation = 'none';
+  nav.style.animation = '.5s menu-slide-out';
+  
+  setTimeout(() => {
+    nav.style.display = 'none';
+    navExit.style.display = 'none';
+  }, 500);
+});
+
 // TAB CONTENT
 
 let contentTab = document.createElement('section');
 contentTab.id = 'content-tab';
+let gitWrapper = document.createElement('div');
+gitWrapper.classList.add('gw');
 let content = document.createElement('div');
 content.id = 'content';
 
-contentTab.appendChild(content);
+contentTab.appendChild(gitWrapper);
+gitWrapper.appendChild(content)
 structure.appendChild(contentTab);
 
 // Set default page
 
-content.appendChild(menuPage);
+content.appendChild(homepage);
+
+// Github Link
+
+let git = document.createElement('a');
+git.setAttribute('href', 'https://github.com/Lucas-Bide/odin-restaurant');
+git.setAttribute('target', '_');
+git.classList.add('github');
+git.textContent = "Github";
+gitWrapper.appendChild(git);
 
 export {structure as default};
