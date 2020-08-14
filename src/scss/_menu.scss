@@ -1,0 +1,124 @@
+// Tabs 
+.menu-nav {
+  display: flex;
+  box-shadow: inset 15px 0 10px -10px, 
+              inset -15px 0 10px -10px;
+  overflow-x: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.menu-nav::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.menu-nav-tab {
+  flex: 1;
+  font-weight: bold;
+  background-color: darken($color: rgba(255, 255, 255, 0.781), $amount: 20%);
+  padding: 20px;
+  border-left: 1px solid darken($color: rgba(255, 255, 255, 0.781), $amount: 40%);
+}
+
+.menu-nav-tab:first-child {
+  border-left-width: 4px;
+}
+
+.menu-nav-tab:last-child {
+  border-right: 4px solid darken($color: rgba(255, 255, 255, 0.781), $amount: 40%);
+}
+
+.menu-nav-tab:hover, .current-menu-tab {
+  background: none;
+}
+
+.current-menu-tab {
+  .menu-nav-tab-link {
+    color: $text-color;
+    text-decoration: underline $bg-color;
+  }
+}
+
+// Content
+.menu-content {
+  height: calc(100% - 80px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid red;
+  margin-top: 20px;
+}
+
+
+// Hide scrollbar
+.menu-nav, .menu-content {
+-ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.menu-nav::-webkit-scrollbar, .menu-content::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+
+// Test
+
+.tester {
+  background-color: yellow;
+  width: 80%;
+  max-width: 800px;
+  height: 400px;
+  margin: 20px auto;
+}
+
+// Menu Item
+
+.menu-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item {
+  min-width: 250px;
+  max-width: 430px;
+  width: 80%;
+}
+
+// .menu-item-pic-container {
+//   min-width: 295.5px;
+//   max-width: 100%;
+//   min-height: 197px;
+//   max-height: 286.233px;
+// }
+
+.menu-item-pic {
+  height: 286.233px;
+  width: 430px;
+}
+
+
+@media(max-width: 660px) {
+  .menu-item-pic {
+    height: 199.697px;
+    width: 300px;
+  }
+}
+@media(max-width: 460px) {
+  .menu-item-pic {
+    height: 166.415px;
+    width: 250px;
+  }
+}
+
+/*
+
+.menu-item> text align right
+.menu-item-pic> width: 80% max-width: 500px; margin: Xpx auto
+.title > span.subtitle (name & price)
+p > description
+
+</menu-item
+
+*/

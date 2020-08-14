@@ -7,10 +7,6 @@
 /* Header Styling */
 
 $nav-bend: 50px;
-$nav-border-color: #fbd24f;
-$nav-border: 4px solid $nav-border-color;
-$nav-bg: rgb(218, 171, 18);
-$nav-text: rgb(107, 90, 36);
 
 #navigation {
   background: url("../images/banana.jpg") center center no-repeat;
@@ -19,11 +15,14 @@ $nav-text: rgb(107, 90, 36);
   padding-top: 40px;
   text-align: center;
   position: relative;
+  font-family: 'Gloria Hallelujah', cursive;
+
+  // font-family: 'Source Sans Pro', sans-serif;
 }
 
 // 1st Level nav elements
 
-.title {
+.brand-title {
   font-size: 60px;
   font-weight: bold;
 }
@@ -39,29 +38,35 @@ $nav-text: rgb(107, 90, 36);
 // Nav items
 
 .nav-item {
-  background-color: $nav-bg;
-  border: $nav-border;
+  background-color: $bg-color;
+  border: $border;
   border-right: none;
   padding: 10px 30px;
   font-size: 30px;
+  transition: background .5s;
 }
 
 .nav-item:hover {
-  background: $nav-border-color;
+  background: $border-color;
+}
+
+#nav-exit:hover {
+  background: none;
 }
 
 .current-tab {
-  background: $nav-border-color;
+  background: $border-color;
 }
 
-.current-tab a, .current-tab a:hover {
-  color: darken($color: $nav-text, $amount: 20%) !important;
+.current-tab a, .current-tab a:hover, #nav-exit a:hover {
+  color: darken($color: $text-color, $amount: 20%) !important;
 }
 
 // Make top end borders round
 
 .nav-item a, .nav-item a:hover {
-  color: $nav-text;
+  color: $text-color;
+  transition: color .5s;
 }
 
 .nav-item:nth-child(2) {
@@ -70,7 +75,7 @@ $nav-text: rgb(107, 90, 36);
 
 .nav-item:last-child {
   border-top-right-radius: $nav-bend;
-  border-right: $nav-border;
+  border-right: $border;
 }
 
 // For mobile
@@ -81,7 +86,7 @@ $nav-text: rgb(107, 90, 36);
 
 // Misc
 
-.menu-bar, .title {
+.menu-bar, .brand-title {
   text-shadow: white 0 0 8px;
 }
 
@@ -94,7 +99,7 @@ $nav-text: rgb(107, 90, 36);
     height: 150px;
   }
 
- .title {
+ .brand-title {
    font-size: 30px;
  }
 
@@ -116,7 +121,7 @@ $nav-text: rgb(107, 90, 36);
   }
 
 
-  .title {
+  .brand-title {
     font-size: 25px;
     border: 7px solid black;
     padding: 5px;
@@ -125,22 +130,25 @@ $nav-text: rgb(107, 90, 36);
   .nav {
     display: none;
     position: fixed;
-    width:100vw;
+    right: 0;
+    width:50vw;
     height: 100vh;
-    padding: 40px;
-    background: $nav-bg;
+    padding: 40px 0;
+    background: $bg-color;
     flex-direction: column;
-    gap: 30px;
-    justify-content: start;
+    justify-content: stretch;
   }
 
   .nav-item {
     border: none !important;
-    padding: 0;
+    border-radius: 0 !important;
+    padding: 30px 0;
+  
   }
 
   #nav-exit {
     align-self: flex-end;
+    margin-right: 40px;
   }
 
   #menu-bar {
@@ -171,20 +179,20 @@ $nav-text: rgb(107, 90, 36);
 
 // Nav animations
 
-@keyframes materialize {
+@keyframes menu-slide-in {
   0% {
-    opacity: 0;
+    right: -50vw;
   }
   100% {
-    opacity: 1;
+    right: 0;
   }
 }
 
-@keyframes dematerialize {
+@keyframes menu-slide-out {
   0% {
-    opacity: 1;
+    right: 0;
   }
   100% {
-    opacity: 0;
+    right: -50vw;
   }
 }

@@ -1,11 +1,15 @@
+import contactPage from './contact.js';
+import aboutPage from './about.js';
+import menuPage from './menu.js';
+
 let structure = document.querySelector('#structure');
 
 // HEADER
 let header = document.createElement('header');
 header.id = 'navigation';
 let headerTitle = document.createElement('h1');
-headerTitle.classList.add('title');
-headerTitle.textContent = 'The Pickled Banana';
+headerTitle.classList.add('brand-title');
+headerTitle.textContent = 'The Bombin\' Banana';
 let headerNav = document.createElement('nav');
 headerNav.classList.add('nav');
 
@@ -29,15 +33,51 @@ for (let i = 0; i < 5; i++) {
   navItem.appendChild(navLink);
 
   // change #content's children here
-  navItem.addEventListener('click', () => {
-    let navItems = document.querySelectorAll('.nav-item');
-    for (let navItem of navItems) {
-      navItem.classList.remove('current-tab');
-    }
-    navItem.classList.add('current-tab');
-  });
+  if (navItem.id != 'nav-exit') {
+    navItem.addEventListener('click', () => {
+      // Select clicked tab
+      let navItems = document.querySelectorAll('.nav-item');
+      for (let navItem of navItems) {
+        navItem.classList.remove('current-tab');
+      }
+      navItem.classList.add('current-tab');
 
+      // Replace content
+      content.style.overflowY = 'scroll';
+      let page = content.querySelector('.page');
+      let current = document.querySelector('.current-tab');
+      let nextPage;
+      switch (current.textContent) {
+        case 'Homepage':
+          nextPage =  null;//homepage;
+          break;
+        case 'Menu':
+          nextPage =  menuPage;//menuPage;
+          content.style.overflowY = 'hidden';
+          break;
+        case 'About':
+          nextPage = aboutPage;// aboutPage;
+          break;
+        case 'Contact':
+          nextPage = contactPage;
+          break;
+      }
 
+      if (page == null) {
+        content.appendChild(nextPage);
+      }
+      else if (page.id != nextPage.id) {
+        content.removeChild(page);
+        content.appendChild(nextPage);
+      }
+
+      // Hide menu on mobile
+      let navExit = document.querySelector('#nav-exit');
+      if (navExit.style.display == 'block') {
+        navExit.dispatchEvent(new Event('click'));
+      }
+    });
+  }
   headerNav.appendChild(navItem);
 }
 
@@ -60,5 +100,9 @@ content.id = 'content';
 
 contentTab.appendChild(content);
 structure.appendChild(contentTab);
+
+// Set default page
+
+content.appendChild(menuPage);
 
 export {structure as default};

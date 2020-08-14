@@ -9,13 +9,13 @@ let nav = document.querySelector('#navigation .nav');
 
 menuBar.addEventListener('click', () => {
   nav.style.display = 'flex';
-  nav.style.animation = '.5s materialize linear';
+  nav.style.animation = '.5s menu-slide-in linear';
   navExit.style.display = 'block';
 });
 
 navExit.addEventListener('click', () => {
   nav.style.animation = 'none';
-  nav.style.animation = '.5s dematerialize';
+  nav.style.animation = '.5s menu-slide-out';
   
   setTimeout(() => {
     nav.style.display = 'none';
