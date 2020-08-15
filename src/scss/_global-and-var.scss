@@ -13,7 +13,6 @@ $text-color: rgb(107, 90, 36);
 
 body {
   height: 100vh;
-  overflow: hidden;
 }
 
 // - Links
@@ -128,6 +127,10 @@ a, a:hover {
 }
 
 @media(max-width: 559.99px) {
+
+  body {
+    height: 100.1vh;
+  }
   #content-tab {
     height: calc(100vh - 80px);
   }
