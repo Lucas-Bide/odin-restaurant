@@ -130,6 +130,7 @@ $nav-bend: 50px;
   .nav {
     display: none;
     position: fixed;
+    z-index: 10;
     right: 0;
     width:50vw;
     height: 100vh;
